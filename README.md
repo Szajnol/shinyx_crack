@@ -1,5 +1,7 @@
 # shinyx_crack
-Fivem Minigame created by me and designed by me
+Fivem Minigame created by me and designed by me inspired by Nopixel 4.0
+
+https://discord.gg/WbmJpZ3fyr
 
 ## Preview
 
