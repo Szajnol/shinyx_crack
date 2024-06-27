@@ -47,7 +47,7 @@ cb('ok')
 end)
 
 RegisterCommand('testGame', function()
-    local success = exports['shinyx_dot']:StartGame()
+    local success = exports['shinyx_crack']:StartGame()
     if success == true then
         ESX.ShowNotification('Udano')
     else
