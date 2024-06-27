@@ -1,6 +1,8 @@
 # shinyx_crack
 Fivem Minigame created by me and designed by me inspired by Nopixel 4.0
 
+It's like wordle but with numbers but with infinite trials and memorization https://www.nytimes.com/games/wordle/index.html
+
 https://discord.gg/WbmJpZ3fyr
 
 ## Preview
