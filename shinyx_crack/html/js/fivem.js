@@ -1,7 +1,7 @@
 
 let progressBarTimer;
 
-let currentContainerIndex = 1; // Indeks aktualnie wybranego kontenera (1, 2, 3, 4)
+let currentContainerIndex = 1;
 $(document).ready(function() {
 
   window.addEventListener("message", function(event) {
@@ -35,7 +35,7 @@ function stopProgressBar() {
 
 function startGame() {
   $('.minigame-container').fadeIn(500)
-  let correctCode = generateCode(); // Wygenerowanie poprawnego 4-cyfrowego kodu
+  let correctCode = generateCode();
 
   $('.minigame-action').text('GENEROWANIE HASLA...')
     startProgressBar(2000, function() {
@@ -48,25 +48,25 @@ function startGame() {
         startProgressBar(2000, function() {
           $('.minigame-container').fadeOut(500)
           $.post(`https://${GetParentResourceName()}/nieudane`);
+          resetContainers();
         })
       })
     })
 
-// Funkcja do generowania 4-cyfrowego kodu
 function generateCode() {
   let code = '';
-  let availableDigits = ['1', '2', '3', '4', '5', '6', '7', '8', '9']; // Dostępne cyfry do wyboru
+  let availableDigits = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
   for (let i = 0; i < 4; i++) {
     const randomIndex = Math.floor(Math.random() * availableDigits.length);
     code += availableDigits[randomIndex];
-    availableDigits.splice(randomIndex, 1); // Usunięcie wybranej cyfry z dostępnych
+    availableDigits.splice(randomIndex, 1); 
   }
   console.log(code)
   return code;
 }
 
-// Funkcja do resetowania kontenerów
+
 function resetContainers() {
   for (let i = 1; i <= 4; i++) {
     document.getElementById(i).textContent = '_';
@@ -75,9 +75,9 @@ function resetContainers() {
   currentContainerIndex = 1;
 }
 
-// Definiujemy funkcję do obsługi kliknięć
+
 function handleKeyPress(event) {
-  // Sprawdzamy czy naciśnięty klawisz jest cyfrą
+
   if (event.key >= '1' && event.key <= '9') {
     if (currentContainerIndex <= 4) {
       const currentContainerId = currentContainerIndex.toString();
@@ -85,7 +85,7 @@ function handleKeyPress(event) {
       const container = document.getElementById(currentContainerId);
       container.textContent = event.key;
 
-      // Sprawdzamy czy wprowadzony kod jest już kompletny
+
       if (currentContainerIndex === 4) {
         checkCode();
       }
@@ -95,7 +95,6 @@ function handleKeyPress(event) {
   }
 }
 
-// Funkcja do sprawdzania kodu
 function checkCode() {
   let enteredCode = '';
   for (let i = 1; i <= 4; i++) {
@@ -117,9 +116,9 @@ function checkCode() {
   }
 
   if (correctDigits === 4) {
-    performAction(); // Wykonaj akcję po poprawnym kodzie
+    performAction(); 
   } else {
-    setTimeout(resetContainers, 1000); // Resetuj kontenery po sekundzie przy błędnym kodzie
+    setTimeout(resetContainers, 1000);
   }
 }
 
@@ -131,6 +130,7 @@ function performAction() {
   $('.minigame-action').fadeIn(500)
   $('.password-container').fadeOut(500)
   startProgressBar(2000, function() {
+    resetContainers()
     $('.minigame-container').fadeOut(500)
   })
 }
