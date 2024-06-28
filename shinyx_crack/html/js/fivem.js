@@ -47,7 +47,7 @@ function startGame() {
         $('.password-container').fadeOut(500)
         startProgressBar(2000, function() {
           $('.minigame-container').fadeOut(500)
-          $.post(`http://${GetParentResourceName()}/nieudane`);
+          $.post(`https://${GetParentResourceName()}/nieudane`);
         })
       })
     })
@@ -127,7 +127,7 @@ function checkCode() {
 function performAction() {
   stopProgressBar()
   $('.minigame-action').text('SUKCES')
-  $.post(`http://${GetParentResourceName()}/udane`);
+  $.post(`https://${GetParentResourceName()}/udane`);
   $('.minigame-action').fadeIn(500)
   $('.password-container').fadeOut(500)
   startProgressBar(2000, function() {
